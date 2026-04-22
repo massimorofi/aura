@@ -43,13 +43,13 @@ export default function Tools() {
         </button>
         {servers?.map((s: any) => (
           <button
-            key={s.name}
-            onClick={() => setSelectedServer(s.name)}
+            key={s.id}
+            onClick={() => setSelectedServer(s.id)}
             className={`rounded-md px-3 py-1.5 text-xs font-medium ${
-              selectedServer === s.name ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:opacity-90'
+              selectedServer === s.id ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:opacity-90'
             }`}
           >
-            {s.name}
+            {s.id}
           </button>
         ))}
       </div>

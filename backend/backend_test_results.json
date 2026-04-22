@@ -1,0 +1,179 @@
+{
+  "total": 14,
+  "passed": 14,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "root",
+      "status": "passed",
+      "details": {
+        "message": "Aura API - MCP Cluster Admin"
+      }
+    },
+    {
+      "name": "cluster_health",
+      "status": "passed",
+      "details": {
+        "overall": "healthy",
+        "services": [
+          {
+            "service": "dema",
+            "status": "healthy",
+            "detail": null
+          },
+          {
+            "service": "tinymcp",
+            "status": "healthy",
+            "detail": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "list_active_plans",
+      "status": "passed",
+      "details": [
+        {
+          "plan_id": "plan-123",
+          "goal": "Test goal",
+          "status": "EXECUTING",
+          "current_stage_idx": 1,
+          "stages": [
+            {
+              "name": "stage-1"
+            }
+          ],
+          "run_id": "run-123"
+        }
+      ]
+    },
+    {
+      "name": "get_plan_detail",
+      "status": "passed",
+      "details": {
+        "plan": {
+          "plan_id": "plan-123",
+          "goal": "Test goal",
+          "status": "EXECUTING",
+          "current_stage_idx": 1,
+          "stages": [
+            {
+              "name": "stage-1"
+            }
+          ],
+          "run_id": "run-123"
+        },
+        "plan_id": "plan-123",
+        "audit_logs": [
+          {
+            "event": "created",
+            "plan_id": "plan-123"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pause_plan",
+      "status": "passed",
+      "details": {
+        "plan_id": "plan-123",
+        "status": "paused"
+      }
+    },
+    {
+      "name": "resume_plan",
+      "status": "passed",
+      "details": {
+        "plan_id": "plan-123",
+        "status": "resumed"
+      }
+    },
+    {
+      "name": "run_plan",
+      "status": "passed",
+      "details": {
+        "plan_id": "plan-123",
+        "mode": "auto",
+        "status": "running"
+      }
+    },
+    {
+      "name": "approval",
+      "status": "passed",
+      "details": {
+        "approval_id": "approval-1",
+        "approved": true,
+        "approval_token": "token-abc"
+      }
+    },
+    {
+      "name": "create_plan",
+      "status": "passed",
+      "details": {
+        "plan_id": "plan-123",
+        "goal": "Test plan goal",
+        "status": "CREATED"
+      }
+    },
+    {
+      "name": "list_tools",
+      "status": "passed",
+      "details": {
+        "tools": [
+          {
+            "name": "tool-1"
+          },
+          {
+            "name": "tool-2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "list_servers",
+      "status": "passed",
+      "details": {
+        "servers": [
+          {
+            "id": "server-1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "execute_tool",
+      "status": "passed",
+      "details": {
+        "name": "test-tool",
+        "arguments": {
+          "arguments": {
+            "arg1": "value1"
+          }
+        },
+        "executed": true
+      }
+    },
+    {
+      "name": "chat",
+      "status": "passed",
+      "details": {
+        "plan_id": "plan-123",
+        "status": "created",
+        "message": "Plan created: Research test message"
+      }
+    },
+    {
+      "name": "metrics_dashboard",
+      "status": "passed",
+      "details": {
+        "total_plans": 0,
+        "active_plans": 0,
+        "completed_plans": 0,
+        "paused_plans": 0,
+        "awaiting_hitl": 0,
+        "tool_count": 2,
+        "server_count": 1
+      }
+    }
+  ]
+}

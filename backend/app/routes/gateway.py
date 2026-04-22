@@ -12,6 +12,22 @@ async def get_tinymcp() -> TinyMCPClient:
 async def list_tools(server: str | None = None,
                      tinymcp: TinyMCPClient = Depends(get_tinymcp)):
     try:
+        # If no specific server requested, query all servers
+        if not server:
+            servers = await tinymcp.list_servers()
+            all_tools = []
+            for s in servers:
+                sid = s.get("id")
+                if sid:
+                    try:
+                        tools_data = await tinymcp.list_tools(sid)
+                        tools = tools_data.get("tools", [])
+                        for t in tools:
+                            t["_server"] = sid
+                        all_tools.extend(tools)
+                    except Exception:
+                        pass
+            return {"tools": all_tools}
         return await tinymcp.list_tools(server)
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Gateway error: {e}")
@@ -20,7 +36,7 @@ async def list_tools(server: str | None = None,
 @router.get("/servers")
 async def list_servers(tinymcp: TinyMCPClient = Depends(get_tinymcp)):
     try:
-        return await tinymcp.get_active_servers()
+        return await tinymcp.list_servers()
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Gateway error: {e}")
 
