@@ -14,9 +14,13 @@ fi
 if [ ! -d "$SCRIPT_DIR/backend/.venv" ]; then
     echo "==> Creating Python virtual environment..."
     python3 -m venv "$SCRIPT_DIR/backend/.venv"
+    if [ ! -f "$SCRIPT_DIR/backend/.venv/bin/pip" ]; then
+        echo "Error: Failed to create virtual environment. Pip not found."
+        exit 1
+    fi
 fi
 source "$SCRIPT_DIR/backend/.venv/bin/activate"
-pip install -r "$SCRIPT_DIR/backend/requirements.txt" --quiet
+"$SCRIPT_DIR/backend/.venv/bin/pip" install -r "$SCRIPT_DIR/backend/requirements.txt" --quiet
 
 # Install frontend deps if needed
 if [ ! -d "$SCRIPT_DIR/frontend/node_modules" ]; then
